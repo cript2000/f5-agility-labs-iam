@@ -3,14 +3,13 @@ Lab 1: Azure AD Easy Button integration
 
 .. warning :: For any remark or mistake in this lab, please send a Teams chat to Matthieu DIERICK.
 
-In this lab, you will learn how to connect APM to Azure AD as IDaaS. Since v15.1, you can enable APM as SAML SP and Azure AD as SAML IDP. 
-In this lab, we will use the new **Easy Button** Guided Configuration template. This template:
-
+In this lab, you will learn how to leverage Azure AD as an IDaaS with F5 Access Policy Manager. In order to most efficiently integrate the two products, we'll be leveraging the **Easy Button** Guided Configuration template
+This template allows administrators to:
 #. Publish on-prems apps
 #. Enable Single Sign on
 #. Interconnect (SAML binding) APM with Azure AD tenant
 
-.. note :: You will notice we will never connect to Azure AD interface. APM will use Microsoft Graph API to configure AAD tenant accordingly.
+.. note :: You will notice we will never manually make changes to Azure AD. APM will use Microsoft Graph API to configure our AAD tenant accordingly.
 
    |image001|
 
@@ -45,7 +44,7 @@ Architecture of Internal Apps
 Bluesky application
 *******************
 
-This application resides on-prems in IIS server. Its FQDN is ``https://bluesky.f5access.onmicrosoft.com`` 
+This application resides on-prem in IIS server. Its FQDN is ``https://bluesky.f5access.onmicrosoft.com`` 
 
 This application is not **authenticated**, meaning there is no **Single Sign on** required in front of this app.
 
@@ -55,9 +54,9 @@ This application is not **authenticated**, meaning there is no **Single Sign on*
 Vanilla application
 *******************
 
-This application resides on-prems in IIS server. Its FQDN is ``https://vanilla.f5access.onmicrosoft.com`` 
+This application resides on-prem in IIS server. Its FQDN is ``https://vanilla.f5access.onmicrosoft.com`` 
 
-This application is **authenticated** by Kerberos. So a **Signle Sign On** will be required to connect to this app.
+This application is **authenticated** via Kerberos so **Single Sign On** will be required to connect to this app.
 
    |image004|
 
@@ -405,7 +404,7 @@ Task 7 - Single Sign-On Settings
 
 #. In ``Credentials Source``, fill as below
 
-    #. Username Source : ``session.saml.last.identity``
+    #. Username Source : ``session.logon.last.username``
     #. Delete User Realm Source value - keep it empty. The domain is similar between Azure AD and on-prems AD.
 
 #. In ``SSO Method Configuration``, fill as below
