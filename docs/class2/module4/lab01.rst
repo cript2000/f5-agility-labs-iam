@@ -3,7 +3,9 @@ Lab 1: Azure AD Easy Button integration
 
 .. warning :: For any remark or mistake in this lab, please send a Teams chat to Matthieu DIERICK.
 
-In this lab, you will learn how to leverage Azure AD as an IDaaS with F5 Access Policy Manager. In order to most efficiently integrate the two products, we'll be leveraging the **Easy Button** Guided Configuration template
+In this lab, you will learn how to leverage Azure AD as an IDaaS with F5 Access Policy Manager. In order to most efficiently integrate the two products, we'll be leveraging the **Easy Button** Guided Configuration template.
+
+
 This template allows administrators to:
 #. Publish on-prems apps
 #. Enable Single Sign on
@@ -44,9 +46,9 @@ Architecture of Internal Apps
 Bluesky application
 *******************
 
-This application resides on-prem in IIS server. Its FQDN is ``https://bluesky.f5access.onmicrosoft.com`` 
+This application is hosted by our on-prem in IIS server. Its FQDN is ``https://bluesky.f5access.onmicrosoft.com`` 
 
-This application is not **authenticated**, meaning there is no **Single Sign on** required in front of this app.
+This application is not **authenticated**, meaning there is no **Single Sign-on** required in front of this app.
 
    |image003|
 
@@ -54,9 +56,9 @@ This application is not **authenticated**, meaning there is no **Single Sign on*
 Vanilla application
 *******************
 
-This application resides on-prem in IIS server. Its FQDN is ``https://vanilla.f5access.onmicrosoft.com`` 
+This application is also hosted by our on-prem IIS server. Its FQDN is ``https://vanilla.f5access.onmicrosoft.com`` 
 
-This application is **authenticated** via Kerberos so **Single Sign On** will be required to connect to this app.
+This application is **authenticated** via Kerberos so **Single Sign-On** will be required to connect to this app.
 
    |image004|
 
@@ -115,7 +117,7 @@ Task 1 - Publish and protect Bluesky app
 
 Let's start with ``Bluesky`` application. Reminder, Bluesky does not have any ``Authentication`` enabled. 
 
-#. Connect to BIG-IP HTTPS user interface from UDF as ``admin`` and password ``admin``
+#. RDP to Win10 (user/user) and using Edge or Chrome, "Connect to the BIG-IP HTTPS user interface (admin/admin)
 #. In ``Access`` > ``Guided Configuration``, select ``Microsoft Integration`` > ``Azure AD application`` 
 
 
